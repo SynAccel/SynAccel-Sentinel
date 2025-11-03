@@ -1,3 +1,7 @@
 # TODO (SynAccel Sentinel Next Step):
-# Implement Step 2 - Bucket Policy exposure check
-# Implement Step 3 - Public Access Block configuration check
+
+# FINSIHED 11/3
+# V Implement Step 2 - Bucket Policy exposure check
+# V Implement Step 3 - Public Access Block configuration check
+
+TODO
