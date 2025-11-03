@@ -1,6 +1,4 @@
 ﻿# SynAccel Sentinel
-
-# SynAccel Sentinel
 An automated cloud-security monitoring and response framework designed to detect, analyze, and respond to suspicious activity across AWS environments.
 
 ## Modules
@@ -28,3 +26,4 @@ SynAccel-Sentinel/
 └── README.md
 
 ```
+
