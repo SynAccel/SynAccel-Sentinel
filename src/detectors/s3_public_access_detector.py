@@ -6,7 +6,7 @@ import json
 def check_bucket_policy(s3, bucket_name):
     check_public_access_blocks(s3, bucket_name)
     """
-    Checks the S3 bucket policy for statements that allow public access.
+    Step 2: Checks the S3 bucket policy for statements that allow public access.
     """
     try:
         response = s3.get_bucket_policy(Bucket=bucket_name)
