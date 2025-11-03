@@ -1,0 +1,14 @@
+# Ignore generated reports and temporary files
+reports/sample_output/
+*.json
+*.md
+
+# Ignore AWS credentials or temp policy files
+*.json
+!README.md
+!docs/*.md
+
+# Python cache and environment files
+__pycache__/
+*.pyc
+.env/
