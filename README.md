@@ -36,6 +36,9 @@ Detectors → Reports → Core (ARL) → Updated Config → Responders
 python src/core/sentinel_core.py
 ```
 
+See the live Phase-1 demo of Sentinel’s Adaptive Response Loop:
+[View Showcase →](docs/showcase_phase1_arl.md)
+
 **Current Folder Structure**
 ```
 SynAccel-Sentinel/
@@ -63,6 +66,7 @@ SynAccel-Sentinel/
 ### Phase-2: Behavioral scoring and weighted risk aggregation
 
 ----Planned----
+
 
 
 
