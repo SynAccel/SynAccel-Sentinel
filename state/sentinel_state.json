@@ -1,0 +1,10 @@
+@'
+{
+  "events": [],
+  "counters": {
+    "IAM_NO_MFA_24h": 0,
+    "S3_PUBLIC_24h": 0
+  },
+  "last_updated": ""
+}
+'@ | Out-File -FilePath "state\sentinel_state.json" -Encoding utf8
