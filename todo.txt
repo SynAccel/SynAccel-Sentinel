@@ -3,5 +3,19 @@
 # FINSIHED 11/3
 # V Implement Step 2 - Bucket Policy exposure check
 # V Implement Step 3 - Public Access Block configuration check
+# V Add S3 Responder with automatic remediation + tagging
+# V Add IAM Exposure Detector (MFA and policy check)
+# V Add IAM Responder (auto-tag or remediate risky users)
 
 TODO
+
+- Add CloudTrail anomaly detector
+- Add GuardDuty Integration module
+
+
+
+# CURRENT DEVELOPMENT
+- Refine report formatting for all detectors (add severity, timestamps)
+- Add global config file (YAML or JSON) for detectors/responders
+- Create unified Sentinel CLI (e.g. `python sentinel.py --module s3`)
+- Link detectors + responders through a centralized `engine/` script
