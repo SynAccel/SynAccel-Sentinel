@@ -1,18 +1,16 @@
-@'
 {
   "version": 1,
-  "updated_at": "",
+  "updated_at": "2025-11-04T05:49:09.743667+00:00",
   "policy": {
     "iam": {
-      "require_mfa": false,
+      "require_mfa": true,
       "disable_keys_on_nomfa": false,
       "escalation_threshold_24h": 2
     },
     "s3": {
-      "auto_tag_only": true,
-      "auto_remediate_public": false,
+      "auto_tag_only": false,
+      "auto_remediate_public": true,
       "escalation_threshold_24h": 2
     }
   }
 }
-'@ | Out-File -FilePath "configs\sentinel_config.json" -Encoding utf8

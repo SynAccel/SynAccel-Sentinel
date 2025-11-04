@@ -1,10 +1,29 @@
-@'
 {
-  "events": [],
+  "events": [
+    {
+      "type": "S3_PUBLIC",
+      "report": "C:\\Users\\Nick\\projects\\SynAccel-Sentinel\\reports\\sample_output\\s3_report_1.md",
+      "ts": "2025-11-04T05:47:04.451177+00:00"
+    },
+    {
+      "type": "S3_PUBLIC",
+      "report": "C:\\Users\\Nick\\projects\\SynAccel-Sentinel\\reports\\sample_output\\s3_report_2.md",
+      "ts": "2025-11-04T05:47:04.451177+00:00"
+    },
+    {
+      "type": "IAM_NO_MFA",
+      "report": "C:\\Users\\Nick\\projects\\SynAccel-Sentinel\\reports\\sample_output\\iam_report_1.md",
+      "ts": "2025-11-04T05:47:04.451177+00:00"
+    },
+    {
+      "type": "IAM_NO_MFA",
+      "report": "C:\\Users\\Nick\\projects\\SynAccel-Sentinel\\reports\\sample_output\\iam_report_2.md",
+      "ts": "2025-11-04T05:47:04.451177+00:00"
+    }
+  ],
   "counters": {
-    "IAM_NO_MFA_24h": 0,
-    "S3_PUBLIC_24h": 0
+    "IAM_NO_MFA_24h": 2,
+    "S3_PUBLIC_24h": 2
   },
-  "last_updated": ""
+  "last_updated": "2025-11-04T05:49:09.743667+00:00"
 }
-'@ | Out-File -FilePath "state\sentinel_state.json" -Encoding utf8
