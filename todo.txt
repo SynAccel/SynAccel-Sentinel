@@ -7,7 +7,18 @@
 # V Add IAM Exposure Detector (MFA and policy check)
 # V Add IAM Responder (auto-tag or remediate risky users)
 
-TODO
+TODO in Adamptive Loop
+
+# FINISHED 11/3
+# V configs/sentinel_config.json
+# V state/sentinel_state.json
+
+# src/core/sentinel_core.py - loop engine that reeads reports,
+updates state, tunes config, and writes a 'core report'
+
+
+
+TODO in responder and detector
 
 - Add CloudTrail anomaly detector
 - Add GuardDuty Integration module
