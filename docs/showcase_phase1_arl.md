@@ -163,8 +163,49 @@ Detectors → Reports → Adaptive Core → Updated Config → Responders
 ```
 
 
+## Reset and Re-capture the Escalation
 
+This tells Sentinel "nothing has been escalated yet."
 
+```
+$baseConfig = @'
+{
+  "version": 1,
+  "updated_at": "",
+  "policy": {
+    "iam": {
+      "require_mfa": false,
+      "disable_keys_on_nomfa": false,
+      "escalation_threshold_24h": 2
+    },
+    "s3": {
+      "auto_tag_only": true,
+      "auto_remediate_public": false,
+      "escalation_threshold_24h": 2
+    }
+  }
+}
+'@
+[IO.File]::WriteAllText("configs/sentinel_config.json", $baseConfig)
+```
+
+Reset Sentinel's state memory
+
+```
+$stateJson = @'
+{
+  "events": [],
+  "counters": {
+    "IAM_NO_MFA_24h": 0,
+    "S3_PUBLIC_24h": 0
+  },
+  "last_updated": ""
+}
+'@
+[IO.File]::WriteAllText("state/sentinel_state.json", $stateJson)
+```
+
+Repeat step 1.. 
 
 
 
