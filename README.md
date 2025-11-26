@@ -68,6 +68,9 @@ SynAccel-Sentinel/
 ----Planned----
 
 
+### Updated 11-26-2025
+
+-Worked on GuardDuty integration (still in experimental on different branch)
 
 
 
