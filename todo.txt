@@ -7,6 +7,13 @@
 # V Add IAM Exposure Detector (MFA and policy check)
 # V Add IAM Responder (auto-tag or remediate risky users)
 
+
+# In experimental 11/26
+
+# V Add CloudTrail anomaly detector
+# V Add GuardDuty Integration module
+
+
 TODO in Adamptive Loop
 
 # FINISHED 11/3
