@@ -1,76 +1,71 @@
-# SynAccel Sentinel
+# SynAccel-Sentinel
 
-**Status:** Active Development (Phase-1 Prototype)  
-**Last Updated:** November 2025  
+**SynAccel-Sentinel** is a modular, Python-based security detection framework designed to identify risks across cloud environments and network activity.
 
-SynAccel Sentinel is an **adaptive cloud-security research framework** under active development by the **SynAccel Cyber R&D** initiative.  
-The project explores how automation and feedback loops can enable **self-learning cloud defenses** that detect risks, respond intelligently, and adapt over time.
+It is part of the larger **SynAccel** ecosystem and focuses on early-stage detection, analysis, and response logic for modern security threats.
 
 ---
 
-##  Current Focus
+## Current Features
 
-### Phase-1: Adaptive Response Loop (ARL)
-Sentinel currently includes a working **Adaptive Response Loop**, which allows the system to learn from its own detections and automatically tighten its response policy when repeated risks occur.
+### AWS Misconfiguration Detection
+Located in: `/src/detectors/`
 
-**What’s implemented so far:**
-- **Detectors** — Identify AWS misconfigurations (IAM and S3 modules).  
-- **Responders** — Perform actions or tagging based on the live policy.  
-- **Core (ARL)** — Tracks detections, updates 24-hour counters, and adjusts policy automatically.  
-- **Config + State** — JSON files store Sentinel’s current policy and adaptive memory.
+- IAM exposure detection
+- Public S3 bucket detection
+- Extensible detector-based design
 
-```
-Detectors → Reports → Core (ARL) → Updated Config → Responders
-↑ ↓
-└────────────────────── 24h State Memory ─────────────┘
+---
 
-```
+### CloudTrail Anomaly Detection (Experimental)
+Located in: `/src/cloudtrail_anomaly_detector/` — on `guardduty-dev` branch
 
-**Example behavior**
-- Multiple public S3 buckets in 24h → `auto_remediate_public = true`  
-- Repeated IAM users without MFA → `require_mfa = true`, later `disable_keys_on_nomfa = true`
+- Pulls CloudTrail events using `boto3`
+- Flags:
+  - Unusual API call frequency
+  - High-risk actions (Delete*, Put*, Attach*, etc.)
+- Rule-driven via `anomaly_rules.json`
+- Designed to integrate with Sentinel's core loop
 
+---
 
-**Run**
-```bash
-python src/core/sentinel_core.py
-```
+### GuardDuty Integration (Experimental)
+Located in: `/src/guardduty_integration/` — on `guardduty-dev` branch
 
-See the live Phase-1 demo of Sentinel’s Adaptive Response Loop:
-[View Showcase →](docs/showcase_phase1_arl.md)
-
-**Current Folder Structure**
-```
-SynAccel-Sentinel/
-├── src/
-│   ├── detectors/
-│   │   ├── iam_exposure_detector.py
-│   │   └── s3_public_access_detector.py
-│   ├── responders/
-│   │   ├── iam_responder.py
-│   │   └── s3_responder.py
-│   ├── core/
-│   │   └── sentinel_core.py
-│   ├── utils/
-│   └── ...
-├── configs/
-│   └── sentinel_config.json
-├── state/
-│   └── sentinel_state.json
-├── reports/
-│   ├── sample_output/
-│   └── ...
-└── README.md
-```
-
-### Phase-2: Behavioral scoring and weighted risk aggregation
-
-----Planned----
+- Connects to AWS GuardDuty
+- Pulls recent findings
+- Parses and normalizes alerts for Sentinel
+- Awaiting live AWS testing/activation
 
 
-### Updated 11-26-2025
+---
 
--Worked on GuardDuty integration (still in experimental on different branch)
+## Development Flow
+
+- Stable code remains on `main`
+- Experimental modules are developed on:
+
+guardduty-dev
+
+- Changes are added via pull requests after testing
+
+---
+
+## Planned Next Steps
+
+- Finish AWS account activation
+- Enable GuardDuty + CloudTrail logging
+- Live test anomaly detection modules
+- Build Sentinel core execution loop
+- Add logging/dashboard
+
+---
+
+## Goal
+
+To create an **adaptive, AI-assisted security monitoring system** capable of detecting misconfigurations, abnormal behavior, and potential threats across cloud and network environments.
+
+
 
 
 
