@@ -1,32 +1,27 @@
-# TODO (SynAccel Sentinel Next Step):
+# SynAccel Sentinel Roadmap
 
-# FINSIHED 11/3
-# V Implement Step 2 - Bucket Policy exposure check
-# V Implement Step 3 - Public Access Block configuration check
-# V Add S3 Responder with automatic remediation + tagging
-# V Add IAM Exposure Detector (MFA and policy check)
-# V Add IAM Responder (auto-tag or remediate risky users)
+## Implemented
 
-TODO in Adamptive Loop
+- Phase 1 rolling 24-hour IAM and S3 finding counters with configurable policy escalation.
+- IAM and S3 exposure detectors that write Markdown reports.
+- Phase 2 weighted per-resource risk scores with signal explanations and time decay.
+- Offline tests for report parsing, deduplication, escalation, scoring bands, and decay.
 
-# FINISHED 11/3
-# V configs/sentinel_config.json
-# V state/sentinel_state.json
+## Current Priorities
 
-# src/core/sentinel_core.py - loop engine that reeads reports,
-updates state, tunes config, and writes a 'core report'
+- Replace phrase-based Markdown parsing with a versioned finding schema.
+- Add offline report replay and comparison without changing live state.
+- Calibrate weights using reviewed examples and add optional asset criticality/ownership context.
+- Add detector coverage for CloudTrail or GuardDuty after the finding schema is stable.
 
+## Future Work
 
+- Connect policy to responders only through dry-run, explicit approval, idempotency, and an audit log.
+- Add multi-account inventory and durable state storage.
+- Evaluate scoring quality against labeled findings before treating score bands as operational policy.
 
-TODO in responder and detector
+## Known Boundaries
 
-- Add CloudTrail anomaly detector
-- Add GuardDuty Integration module
-
-
-
-# CURRENT DEVELOPMENT
-- Refine report formatting for all detectors (add severity, timestamps)
-- Add global config file (YAML or JSON) for detectors/responders
-- Create unified Sentinel CLI (e.g. `python sentinel.py --module s3`)
-- Link detectors + responders through a centralized `engine/` script
+- The core ingests detector Markdown reports and does not call AWS.
+- Risk scores produce recommendations only; they do not trigger remediation.
+- Responders are standalone scripts and must be reviewed before use against a live account.

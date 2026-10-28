@@ -1,7 +1,7 @@
 import boto3
 from botocore.exceptions import ClientError
 from datetime import datetime, timezone
-import os
+from pathlib import Path
 
 def save_report(findings):
     """Saves IAM exposure findings to a MD report
@@ -9,21 +9,21 @@ def save_report(findings):
     Args:
         findings (_type_): _description_
     """
-    timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    report_dir = os.path.join(os.path.dirname(__file__), "../../report/sample_output")
-    os.makedirs(report_dir, exist_ok=True)
-    report_path = os.path.join(report_dir, f"iam_detector_report_{timestamp}.md")
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
+    report_dir = Path(__file__).resolve().parents[2] / "reports" / "sample_output"
+    report_dir.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / f"iam_detector_report_{timestamp}.md"
     
-    with open(report_path, "w") as f:
-        f.write(" # SynAccel IAM Exposure Report\n\n")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# SynAccel IAM Exposure Report\n\n")
         f.write(f"Generated: {timestamp}\n\n")
         if not findings:
             f.write("✓ No risky IAM users detected.\n")
         else:
-            for findings in findings:
-                f.write(f"- {findings}\n")
+            for finding in findings:
+                f.write(f"- {finding}\n")
     
-    print(f"[✓] Markdown report saved to: {os.path.abspath(report_path)}")
+    print(f"[✓] Markdown report saved to: {report_path}")
     
 def create_aws_session(profile_name="sentinel-automation"):
     """Create authenticated AWS session"""

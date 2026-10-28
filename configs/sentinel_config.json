@@ -12,5 +12,23 @@
       "auto_remediate_public": true,
       "escalation_threshold_24h": 2
     }
+  },
+  "risk_scoring": {
+    "window_hours": 48,
+    "half_life_hours": 24,
+    "thresholds": {
+      "guarded": 25,
+      "high": 50,
+      "critical": 75
+    },
+    "weights": {
+      "IAM_NO_MFA": 35,
+      "IAM_OLD_ACCESS_KEY": 25,
+      "S3_PUBLIC_POLICY": 65,
+      "S3_PUBLIC_ACL": 60,
+      "S3_AUTHENTICATED_ACL": 45,
+      "S3_MISSING_PUBLIC_ACCESS_BLOCK": 35,
+      "S3_PUBLIC": 55
+    }
   }
 }
